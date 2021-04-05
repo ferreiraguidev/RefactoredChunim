@@ -47,7 +47,6 @@ public class CarService {
 
         return carRepository.save(car);
 
-
     }
 
     public void delete(Integer id) {
@@ -55,8 +54,6 @@ public class CarService {
     }
 
     public void update(CarPutRequestBody carPutRequestBody) {
-
-        //comment
 
         Car savedCar = findById(carPutRequestBody.getId());
 

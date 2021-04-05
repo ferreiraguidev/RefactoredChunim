@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 
 @Data
@@ -25,18 +26,23 @@ public class Car {
     private Integer id;
 
     @Column(nullable = false)
+    @NotEmpty
     private String name;
 
     @Column(nullable = false)
+
     private String type;
 
     @Column(nullable = false)
+
     private String brand;
 
     @Column(nullable = false)
+
     private String model;
 
     @Column(nullable = false)
+
     private String year;
 
     @Column(nullable = false)

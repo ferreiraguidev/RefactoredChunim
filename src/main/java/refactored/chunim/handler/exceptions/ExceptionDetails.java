@@ -2,10 +2,11 @@ package refactored.chunim.handler.exceptions;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 
 @Data
-@Builder
+@SuperBuilder
 
 public class ExceptionDetails {
 
