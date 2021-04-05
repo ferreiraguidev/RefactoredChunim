@@ -5,14 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Collectors;
+
 
 @Data
 @AllArgsConstructor
@@ -24,15 +27,28 @@ public class GarageAdmin implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @NotBlank(message = "username can not be empty")
     private String username;
     private String password;
-
+    private String authorities; // Role Admin
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Arrays.stream(authorities.split(" , "))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
     }
+
+    @Override
+    public String getUsername(){
+        return this.username;
+    }
+    @Override
+    public String getPassword(){
+        return this.password;
+    }
+
 
     @Override
     public boolean isAccountNonExpired() {

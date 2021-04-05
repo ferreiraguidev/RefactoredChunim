@@ -1,4 +1,4 @@
-package refactored.chunim.service;
+package refactored.chunim.endpoint.service;
 
 
 import lombok.*;
@@ -6,7 +6,7 @@ import lombok.*;
 import org.springframework.stereotype.Service;
 
 import refactored.chunim.model.Car;
-import refactored.chunim.repository.CarRepository;
+import refactored.chunim.endpoint.repository.CarRepository;
 import refactored.chunim.request.CarPostRequestBody;
 import refactored.chunim.request.CarPutRequestBody;
 

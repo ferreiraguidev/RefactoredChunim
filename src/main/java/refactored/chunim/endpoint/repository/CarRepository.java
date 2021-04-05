@@ -1,4 +1,4 @@
-package refactored.chunim.repository;
+package refactored.chunim.endpoint.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
