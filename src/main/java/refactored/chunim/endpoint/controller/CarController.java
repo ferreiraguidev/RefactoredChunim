@@ -20,10 +20,6 @@ import java.util.List;
 @RequestMapping("cars")
 @Log4j2
 @Data
-@Builder
-
-// @Controller does not have a reponse body
-
 public class CarController { // DAO *
     // return a json value
 
@@ -61,7 +57,11 @@ public class CarController { // DAO *
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
+    /**
+     *
+     * @param carPutRequestBody
+     * @return
+     */
     @PutMapping
     public ResponseEntity<Void> update(@RequestBody CarPutRequestBody carPutRequestBody) {
         carService.update(carPutRequestBody);
