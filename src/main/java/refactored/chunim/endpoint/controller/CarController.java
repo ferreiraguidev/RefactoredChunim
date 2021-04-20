@@ -1,7 +1,6 @@
 package refactored.chunim.endpoint.controller;
 
-import lombok.Builder;
-import lombok.Data;
+
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping("cars")
 @Log4j2
-@Data
 public class CarController { // DAO *
     // return a json value
 
@@ -57,11 +55,6 @@ public class CarController { // DAO *
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    /**
-     *
-     * @param carPutRequestBody
-     * @return
-     */
     @PutMapping
     public ResponseEntity<Void> update(@RequestBody CarPutRequestBody carPutRequestBody) {
         carService.update(carPutRequestBody);
