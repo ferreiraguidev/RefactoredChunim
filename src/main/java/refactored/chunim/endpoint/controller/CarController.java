@@ -19,9 +19,6 @@ import java.util.List;
 @RequestMapping("cars")
 @Log4j2
 public class CarController { // DAO *
-    // return a json value
-
-    // Endpoints will be here
 
     private final CarService carService;
 
@@ -30,11 +27,12 @@ public class CarController { // DAO *
         return new ResponseEntity<>(carService.findAll(),HttpStatus.OK);
     }
 
+
     @GetMapping(path = "/{id}")
     public ResponseEntity<Car> findById(@PathVariable Integer id){
-
         return ResponseEntity.ok(carService.findById(id));
     }
+
 
     @GetMapping(path = "/by-id{id}")
     public ResponseEntity<Car> findByIdAuthentication(@PathVariable Integer id,
@@ -46,7 +44,6 @@ public class CarController { // DAO *
     @PostMapping
     public ResponseEntity<Car> save(@RequestBody @Valid CarPostRequestBody carPostRequestBody) {
         return new ResponseEntity<>(carService.save(carPostRequestBody), HttpStatus.CREATED);
-
     }
 
     @DeleteMapping(path = "/{id}")
