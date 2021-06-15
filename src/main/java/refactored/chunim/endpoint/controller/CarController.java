@@ -30,6 +30,11 @@ public class CarController { // DAO *
         return ResponseEntity.ok(carService.findById(id));
     }
 
+    @GetMapping(path = "/{name}")
+    public ResponseEntity<List<Car>> findByName(@RequestParam(value = "name") String name){
+        return ResponseEntity.ok(carService.findByName(name));
+    }
+
     @PostMapping
     public ResponseEntity<Car> save(@RequestBody @Valid CarPostRequestBody carPostRequestBody) {
         return new ResponseEntity<>(carService.save(carPostRequestBody), HttpStatus.CREATED);

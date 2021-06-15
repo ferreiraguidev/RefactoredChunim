@@ -32,6 +32,15 @@ public class CarService {
         return op;
     }
 
+    public List<Car> findByName(String name) {
+
+        List<Car> opName = carRepository.findByName(name);
+
+//                .orElseThrow(() -> new BadRequestException("Could not find the correspondent ID"));
+        return opName;
+
+    }
+
     public Car save(CarPostRequestBody carPostRequestBody) {
 
         Car car = Car.builder()
@@ -72,4 +81,5 @@ public class CarService {
         carRepository.save(car);
 
     }
+
 }

@@ -29,10 +29,10 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         // responsible for
         return new ApiInfoBuilder()
-                .title("anythiing")
-                .description("nythiing")
-                .license("nythiing")
-                .version("nythiing")
+                .title("Refactored Chunim -API")
+                .description("Back-end API's endpoints")
+                .license("---------")
+                .version("---------")
                 .build();
 
         // version *

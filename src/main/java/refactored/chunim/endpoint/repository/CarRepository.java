@@ -2,7 +2,6 @@ package refactored.chunim.endpoint.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import refactored.chunim.model.Car;
 
@@ -14,5 +13,8 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     List<Car> findAll();
 
+//
+    List<Car> findByName(String name);
 
+    // 10 min 54 sec lesson 22.....
 }
