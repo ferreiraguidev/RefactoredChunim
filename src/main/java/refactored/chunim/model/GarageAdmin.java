@@ -49,7 +49,6 @@ public class GarageAdmin implements UserDetails {
         return this.password;
     }
 
-
     @Override
     public boolean isAccountNonExpired() {
         return true;

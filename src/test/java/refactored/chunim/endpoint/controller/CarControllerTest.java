@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import refactored.chunim.RefactoredChunimApplication;
+
 import refactored.chunim.endpoint.service.CarService;
 import refactored.chunim.model.Car;
 import refactored.chunim.request.CarPostRequestBody;
@@ -24,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RefactoredChunimApplication.class)
 class CarControllerTest {
+
 
     @Autowired
     private CarController carController;

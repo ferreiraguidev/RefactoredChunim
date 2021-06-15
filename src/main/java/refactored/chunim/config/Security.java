@@ -15,7 +15,6 @@ import refactored.chunim.endpoint.service.GaradeUserDetailService;
 @RequiredArgsConstructor
 
 public class Security extends WebSecurityConfigurerAdapter {
-
     private final GaradeUserDetailService garadeUserDetailService;
 
     @Override
@@ -24,7 +23,8 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/cars/admin/**").hasRole("ADMIN")
                 .anyRequest()
-                .authenticated()
+                .permitAll()
+//                .authenticated()
                 .and()
                 .formLogin()
                 .and()

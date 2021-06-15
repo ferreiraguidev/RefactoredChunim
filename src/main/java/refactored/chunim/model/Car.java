@@ -5,15 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 
 @Entity
 public class Car {
@@ -52,8 +54,5 @@ public class Car {
 
     private String imagespath;
 
-
 }
-
-
 

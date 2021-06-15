@@ -4,8 +4,6 @@ package refactored.chunim.endpoint.controller;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import refactored.chunim.endpoint.service.CarService;
 import refactored.chunim.model.Car;
@@ -27,17 +25,8 @@ public class CarController { // DAO *
         return new ResponseEntity<>(carService.findAll(),HttpStatus.OK);
     }
 
-
     @GetMapping(path = "/{id}")
     public ResponseEntity<Car> findById(@PathVariable Integer id){
-        return ResponseEntity.ok(carService.findById(id));
-    }
-
-
-    @GetMapping(path = "/by-id{id}")
-    public ResponseEntity<Car> findByIdAuthentication(@PathVariable Integer id,
-                                                      @AuthenticationPrincipal UserDetails userDetails) {
-        log.info(userDetails);
         return ResponseEntity.ok(carService.findById(id));
     }
 
@@ -60,6 +49,6 @@ public class CarController { // DAO *
 
     public CarController(CarService carService) {
         this.carService = carService;
+
     }
 }
-

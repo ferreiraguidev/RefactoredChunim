@@ -8,10 +8,11 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import refactored.chunim.handler.exceptions.BadRequestException;
 import refactored.chunim.handler.exceptions.ExceptionDetails;
 import refactored.chunim.handler.exceptions.ValidationExceptionDetails;
 
-import javax.ws.rs.BadRequestException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class RestExceptionHandler {
                 ExceptionDetails.builder()
                         .status(HttpStatus.BAD_REQUEST.value())
                         .title("Bad Request Exception, please check the Documentation")
-                        .devMessage(badRequestException.getClass().getName())
+                        .devMessage("This Car does not exist yet in the database")
                         .build(), HttpStatus.BAD_REQUEST);
     }
 

@@ -8,6 +8,6 @@ public class RefactoredChunimApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(RefactoredChunimApplication.class, args);
-    }
 
+    }
 }

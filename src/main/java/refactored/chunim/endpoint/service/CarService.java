@@ -1,16 +1,14 @@
 package refactored.chunim.endpoint.service;
 
 
-import lombok.*;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import refactored.chunim.model.Car;
 import refactored.chunim.endpoint.repository.CarRepository;
+import refactored.chunim.handler.exceptions.BadRequestException;
+import refactored.chunim.model.Car;
 import refactored.chunim.request.CarPostRequestBody;
 import refactored.chunim.request.CarPutRequestBody;
 
-import javax.ws.rs.BadRequestException;
 import java.util.List;
 
 
@@ -27,9 +25,11 @@ public class CarService {
     }
 
     public Car findById(Integer id) {
-        return carRepository.findById(id)
-                .orElseThrow(() -> new BadRequestException("message"));
 
+        Car op = carRepository.findById(id)
+        .orElseThrow(()-> new BadRequestException("Could not find the correspondent ID"));
+
+        return op;
     }
 
     public Car save(CarPostRequestBody carPostRequestBody) {
