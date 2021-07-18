@@ -22,32 +22,33 @@ public class CarController { // DAO *
 
     @GetMapping
     public ResponseEntity<List<Car>> listAll() {
-        return new ResponseEntity<>(carService.findAll(),HttpStatus.OK);
+        return new ResponseEntity<>(carService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<Car> findById(@PathVariable Integer id){
+    @GetMapping(path = "/{id}")    public ResponseEntity<Car> findById(@PathVariable Integer id) {
         return ResponseEntity.ok(carService.findById(id));
     }
 
     @GetMapping(path = "/{name}")
-    public ResponseEntity<List<Car>> findByName(@RequestParam(value = "name") String name){
+    public ResponseEntity<List<Car>> findByName(@RequestParam(value = "name") String name) {
         return ResponseEntity.ok(carService.findByName(name));
     }
 
     @PostMapping
     public ResponseEntity<Car> save(@RequestBody @Valid CarPostRequestBody carPostRequestBody) {
+
+
         return new ResponseEntity<>(carService.save(carPostRequestBody), HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Car> delete(@PathVariable Integer id){
+    public ResponseEntity<Car> delete(@PathVariable Integer id) {
         carService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping
-    public ResponseEntity<Void> update(@RequestBody CarPutRequestBody carPutRequestBody) {
+    public ResponseEntity<Void> update(@Valid @RequestBody CarPutRequestBody carPutRequestBody) {
         carService.update(carPutRequestBody);
         return new ResponseEntity<>(HttpStatus.OK);
     }

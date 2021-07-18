@@ -1,4 +1,4 @@
-package refactored.chunim.endpoint.repository;
+package refactored.chunim.repository;
 
 
 import org.assertj.core.api.Assertions;
@@ -9,8 +9,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import refactored.chunim.model.Car;
 import refactored.util.CarCreator;
-
-import java.util.Optional;
 
 @DataJpaTest
 @DisplayName("Car Repository test")

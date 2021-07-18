@@ -3,7 +3,7 @@ package refactored.chunim.endpoint.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import refactored.chunim.endpoint.repository.CarRepository;
+import refactored.chunim.repository.CarRepository;
 import refactored.chunim.handler.exceptions.BadRequestException;
 import refactored.chunim.model.Car;
 import refactored.chunim.request.CarPostRequestBody;
@@ -14,7 +14,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor // dependency injections
-
 public class CarService {
     // business logic
 

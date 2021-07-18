@@ -23,9 +23,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = RefactoredChunimApplication.class)
+//@SpringBootTest(classes = RefactoredChunimApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CarControllerTest {
-
 
     @Autowired
     private CarController carController;
@@ -49,7 +49,6 @@ class CarControllerTest {
         carPostRequestBody.setImagespath("TESTE");
         return carPostRequestBody;
     }
-
 
 
     @Test

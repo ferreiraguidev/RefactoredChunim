@@ -1,6 +1,7 @@
 server:
   error:
     include-stacktrace: on_param
+  port: 8085
 
 
 spring:
@@ -9,10 +10,22 @@ spring:
     username: root
     password: root
 
+    tomcat:
+      test-while-idle: true
+      validation-query: SELECT 1
+
+
   jpa:
     hibernate:
       ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
+  jackson:
+    serialization.write-dates-as-timestamps: false
+    serialization.write-dates-with-zone-id: true
+
+
 
 logging:
   level:
