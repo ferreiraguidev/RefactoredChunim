@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import refactored.chunim.repository.AdminRepository;
 import refactored.chunim.model.ApplicationUser;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;

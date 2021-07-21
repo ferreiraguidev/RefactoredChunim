@@ -1,6 +1,5 @@
 package refactored.chunim.endpoint.controller;
 
-
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,47 +13,49 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("cars")
+@RequestMapping("/api/v1")
 @Log4j2
 public class CarController { // DAO *
 
     private final CarService carService;
 
-    @GetMapping
+    public CarController(CarService carService) {
+        this.carService = carService;
+    }
+
+    @GetMapping("/cars")
     public ResponseEntity<List<Car>> listAll() {
         return new ResponseEntity<>(carService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/{id}")    public ResponseEntity<Car> findById(@PathVariable Integer id) {
+    @GetMapping(path = "/cars/{id}")
+    public ResponseEntity<Car> findById(@PathVariable Integer id) {
         return ResponseEntity.ok(carService.findById(id));
     }
 
-    @GetMapping(path = "/{name}")
+    @GetMapping(path = "/cars/{name}")
     public ResponseEntity<List<Car>> findByName(@RequestParam(value = "name") String name) {
         return ResponseEntity.ok(carService.findByName(name));
     }
 
-    @PostMapping
+    @PostMapping("cars")
     public ResponseEntity<Car> save(@RequestBody @Valid CarPostRequestBody carPostRequestBody) {
 
 
         return new ResponseEntity<>(carService.save(carPostRequestBody), HttpStatus.CREATED);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/cars/{id}")
     public ResponseEntity<Car> delete(@PathVariable Integer id) {
         carService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping
+    @PutMapping("cars")
     public ResponseEntity<Void> update(@Valid @RequestBody CarPutRequestBody carPutRequestBody) {
         carService.update(carPutRequestBody);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    public CarController(CarService carService) {
-        this.carService = carService;
 
-    }
 }

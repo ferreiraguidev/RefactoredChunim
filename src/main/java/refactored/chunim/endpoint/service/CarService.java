@@ -25,18 +25,14 @@ public class CarService {
 
     public Car findById(Integer id) {
 
-        Car op = carRepository.findById(id)
-        .orElseThrow(()-> new BadRequestException("Could not find the correspondent ID"));
-
-        return op;
+        return carRepository.findById(id)
+                .orElseThrow(() -> new BadRequestException("Could not find the correspondent ID"));
     }
 
     public List<Car> findByName(String name) {
 
-        List<Car> opName = carRepository.findByName(name);
-
-//                .orElseThrow(() -> new BadRequestException("Could not find the correspondent ID"));
-        return opName;
+        //                .orElseThrow(() -> new BadRequestException("Could not find the correspondent ID"));
+        return carRepository.findByName(name);
 
     }
 

@@ -17,15 +17,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
   jackson:
     serialization.write-dates-as-timestamps: false
     serialization.write-dates-with-zone-id: true
-
-
 
 logging:
   level:

@@ -16,7 +16,6 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class GarageAdmin extends AbstractEntity {
 
-
     @NotBlank(message = "username can not be empty")
     private String username;
 
@@ -25,13 +24,5 @@ public class GarageAdmin extends AbstractEntity {
 
     @NotBlank(message = "authority must be defined")
     private String authorities; // Role Admin
-
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return Arrays.stream(authorities.split(" , "))
-//                .map(SimpleGrantedAuthority::new)
-//                .collect(Collectors.toList());
-
 
 }

@@ -18,8 +18,9 @@ public class ApplicationUser extends AbstractEntity {
     @NotBlank(message = "password can not be empty")
     private String password;
 
-//    @NotBlank(message = "authorities can not be empty")
-//    private String authorities; // Role Admin
+    @OneToOne
+    private ApplicationUser applicationUser;
+
 
     @OneToOne
     private GarageAdmin garageAdmin;
@@ -27,12 +28,24 @@ public class ApplicationUser extends AbstractEntity {
     public ApplicationUser(ApplicationUser applicationUser) {
         this.username = applicationUser.username;
         this.password = applicationUser.password;
+        this.applicationUser = applicationUser.applicationUser;
         this.garageAdmin = applicationUser.garageAdmin;
     }
 
     public ApplicationUser() {
-
     }
+
+
+    //    public ApplicationUser(ApplicationUser applicationUser) {
+//        this.username = applicationUser.username;
+//        this.password = applicationUser.password;
+//        this.admin = applicationUser.admin;
+//        this.garageAdmin = applicationUser.garageAdmin;
+//    }
+//
+//    public ApplicationUser() {
+//    }
+
 }
 
 
