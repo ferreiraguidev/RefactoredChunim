@@ -1,4 +1,4 @@
-package refactored.chunim.security.filter;
+package refactored.chunim.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         Users users = usersRepository.findByUsername(login).get();
 
-        List<GrantedAuthority> authorityListAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIM");
+        List<GrantedAuthority> authorityListAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
         List<GrantedAuthority> role_user = AuthorityUtils.createAuthorityList("ROLE_USER");
 
         if(users.isAdmin()) {

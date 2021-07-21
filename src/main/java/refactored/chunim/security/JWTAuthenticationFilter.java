@@ -1,4 +1,4 @@
-package refactored.chunim.security.filter;
+package refactored.chunim.security;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +11,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import refactored.chunim.model.ApplicationUser;
 import refactored.chunim.model.Users;
 import refactored.chunim.repository.UsersRepository;
 
@@ -20,13 +19,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.stream.Collectors;
-
-import static refactored.chunim.security.filter.Constants.*;
 
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -61,14 +55,14 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String token = Jwts.builder()
                 .setSubject(login)
                 .claim("authorities", authResult.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS512, SECRET)
+                .setExpiration(new Date(System.currentTimeMillis() + Constants.EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, Constants.SECRET)
                 .compact();
 
 
         response.addHeader("Access-Control-Expose-Headers", "Authorization");
         response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept, X-Custom-header");
-        response.addHeader(HEADER, TOKEN_PREFIX + token);
+        response.addHeader(Constants.HEADER, Constants.TOKEN_PREFIX + token);
 
     }
 }

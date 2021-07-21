@@ -1,4 +1,4 @@
-package refactored.chunim.request;
+package refactored.chunim.model.request;
 
 
 import lombok.Data;

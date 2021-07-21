@@ -1,4 +1,4 @@
-package refactored.chunim.endpoint.service;
+package refactored.chunim.service;
 
 
 import lombok.RequiredArgsConstructor;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import refactored.chunim.repository.CarRepository;
 import refactored.chunim.handler.exceptions.BadRequestException;
 import refactored.chunim.model.Car;
-import refactored.chunim.request.CarPostRequestBody;
-import refactored.chunim.request.CarPutRequestBody;
+import refactored.chunim.model.request.CarPostRequestBody;
+import refactored.chunim.model.request.CarPutRequestBody;
 
 import java.util.List;
 
@@ -54,7 +54,7 @@ public class CarService {
     }
 
     public void delete(Integer id) {
-        carRepository.delete(findById(id));
+        carRepository.deleteById(id);
     }
 
     public void update(CarPutRequestBody carPutRequestBody) {

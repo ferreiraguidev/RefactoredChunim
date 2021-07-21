@@ -10,9 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import refactored.chunim.repository.UsersRepository;
-import refactored.chunim.security.filter.CustomUserDetailsService;
-import refactored.chunim.security.filter.JWTAuthenticationFilter;
-import refactored.chunim.security.filter.JWTAuthorizationFilter;
+import refactored.chunim.security.CustomUserDetailsService;
+import refactored.chunim.security.JWTAuthenticationFilter;
+import refactored.chunim.security.JWTAuthorizationFilter;
 
 
 @Log4j2
@@ -31,14 +31,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userDetailsService = userDetailsService;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/login").permitAll()
 
                 .antMatchers("/**/admin/**").hasRole(ADMIN)
                 .antMatchers("/**/user/**").hasRole(USER)
-                .antMatchers("/**/cars/").hasRole(ADMIN)
+                .antMatchers("/**/cars/**").hasRole(ADMIN)
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager(), usersRepository))

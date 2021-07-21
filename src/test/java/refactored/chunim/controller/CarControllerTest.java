@@ -1,4 +1,4 @@
-package refactored.chunim.endpoint.controller;
+package refactored.chunim.controller;
 
 
 import org.junit.Rule;
@@ -10,12 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-import refactored.chunim.RefactoredChunimApplication;
 
-import refactored.chunim.endpoint.service.CarService;
+import refactored.chunim.service.CarService;
 import refactored.chunim.model.Car;
-import refactored.chunim.request.CarPostRequestBody;
-import refactored.chunim.request.CarPutRequestBody;
+import refactored.chunim.model.request.CarPostRequestBody;
+import refactored.chunim.model.request.CarPutRequestBody;
 
 import javax.transaction.Transactional;
 
@@ -89,7 +88,7 @@ class CarControllerTest {
     @DisplayName("Delete car")
     void delete() {
         ResponseEntity<Car> savedCar = carController.save(carMocked());
-        ResponseEntity<Car> deleteCar = carController.delete(savedCar.getBody().getId());
+        ResponseEntity<Void> deleteCar = carController.delete(savedCar.getBody().getId());
 
         assertThat(deleteCar.getStatusCodeValue()).isEqualTo(204);
         assertThat(deleteCar.getBody()).isNull();

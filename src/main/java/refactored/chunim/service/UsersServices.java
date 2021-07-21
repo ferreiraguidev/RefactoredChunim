@@ -1,4 +1,4 @@
-package refactored.chunim.endpoint.service;
+package refactored.chunim.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

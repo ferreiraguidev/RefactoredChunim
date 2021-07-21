@@ -1,13 +1,13 @@
-package refactored.chunim.endpoint.controller;
+package refactored.chunim.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import refactored.chunim.endpoint.service.CarService;
+import refactored.chunim.service.CarService;
 import refactored.chunim.model.Car;
-import refactored.chunim.request.CarPostRequestBody;
-import refactored.chunim.request.CarPutRequestBody;
+import refactored.chunim.model.request.CarPostRequestBody;
+import refactored.chunim.model.request.CarPutRequestBody;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @Log4j2
-public class CarController { // DAO *
+public class CarController {
 
     private final CarService carService;
 
@@ -40,13 +40,11 @@ public class CarController { // DAO *
 
     @PostMapping("cars")
     public ResponseEntity<Car> save(@RequestBody @Valid CarPostRequestBody carPostRequestBody) {
-
-
         return new ResponseEntity<>(carService.save(carPostRequestBody), HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/cars/{id}")
-    public ResponseEntity<Car> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
         carService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
