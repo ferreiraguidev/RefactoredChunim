@@ -21,7 +21,7 @@ public class RefactoredChunimApplication {
     InitializingBean sendDataUser() {
         return () -> {
             usersServices.createUserAdmin();
+            usersServices.createUser();
         };
     }
-
 }

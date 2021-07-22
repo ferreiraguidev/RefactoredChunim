@@ -41,4 +41,21 @@ public class UsersServices {
         }
     }
 
+    public void createUser() {
+        try {
+            if (usersRepository.findByUsername("user").isEmpty()) {
+                Users u = new Users();
+                u.setName("CommomUser");
+                u.setUsername("user");
+                u.setPassword(new BCryptPasswordEncoder().encode("pass123"));
+                u.setAdmin(false);
+
+                usersRepository.save(u);
+            }
+        } catch (Exception e) {
+            log.debug(e.toString());
+        }
+    }
+
+
 }
