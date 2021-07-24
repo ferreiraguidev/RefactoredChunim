@@ -4,8 +4,9 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 
-@Data
+
 @Entity
+@Data
 public class Users extends AbstractEntity {
 
     private String name;

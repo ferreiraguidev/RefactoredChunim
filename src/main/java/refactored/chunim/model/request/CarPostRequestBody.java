@@ -20,9 +20,9 @@ public class CarPostRequestBody {
     private String year;
     @NotBlank
     private String price;
-
+    @NotBlank
     private String description;
-
+    @NotBlank
     private String imagespath;
 
 }

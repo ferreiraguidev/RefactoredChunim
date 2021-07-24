@@ -4,10 +4,10 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import refactored.chunim.service.CarService;
 import refactored.chunim.model.Car;
 import refactored.chunim.model.request.CarPostRequestBody;
 import refactored.chunim.model.request.CarPutRequestBody;
+import refactored.chunim.service.CarService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -54,6 +54,4 @@ public class CarController {
         carService.update(carPutRequestBody);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 }

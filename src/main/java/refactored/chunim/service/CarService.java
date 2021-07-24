@@ -31,8 +31,8 @@ public class CarService {
 
     public List<Car> findByName(String name) {
 
-        //                .orElseThrow(() -> new BadRequestException("Could not find the correspondent ID"));
-        return carRepository.findByName(name);
+        return carRepository.findByName(name)
+                .orElseThrow(()->new BadRequestException("Could not find a correspondent car"));
 
     }
 

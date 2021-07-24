@@ -4,6 +4,7 @@ package refactored.chunim.security;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.client.HttpClientErrorException;
 import refactored.chunim.model.Users;
 import refactored.chunim.repository.UsersRepository;
 
@@ -50,7 +52,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain, Authentication authResult) throws IOException, ServletException {
 
         String login = ((User) authResult.getPrincipal()).getUsername();
-        Users byUsername = usersRepository.findByUsername(login).orElseThrow(() -> new NullPointerException("user not found!")); //<- Usar no futuro
+        Users byUsername = usersRepository.findByUsername(login).orElseThrow(() -> new HttpClientErrorException(HttpStatus.BAD_REQUEST));
 
         String token = Jwts.builder()
                 .setSubject(login)
